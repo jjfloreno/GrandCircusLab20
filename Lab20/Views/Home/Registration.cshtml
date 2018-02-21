@@ -1,0 +1,32 @@
+﻿<link rel="stylesheet" type="text/css" href="~/Content/CustomStyles.css">
+<h2>@ViewBag.Message</h2>
+
+<form id="AddUser" action="RegisterUser" method="post">
+    <div>
+        <label>First Name:</label><input type="text" name="FirstName" placeholder="First Name" /><br />
+    </div>
+    <div>
+        <label>Last Name:</label><input type="text" name="LastName" placeholder="Last Name" /><br />
+    </div>
+    <div>
+        <label>Email Address:</label><input type="text" name="Email" placeholder="Email Address" /><br />
+    </div>
+    <div>
+        <label>Password:</label><input type="password" id="PWord" name="PWord" placeholder="Password" /><br />
+    </div>
+    <div>
+        <label></label><input type="password" name="PWordConfirm" placeholder="Re-enter Password" /><br />
+    </div>
+    <br />
+    <b>Position:</b><br />
+    <input type="radio" name="Position" value="Forward" />&nbsp;Forward<br />
+    <input type="radio" name="Position" value="Defense" />&nbsp;Defense<br />
+    <input type="radio" name="Position" value="Goalie" />&nbsp;Goalie<br />
+    <br />
+    <b>Hand:</b><br />
+    <input type="radio" name="Hand" value="Right" />&nbsp;Right<br />
+    <input type="radio" name="Hand" value="Left" />&nbsp;Left<br />
+    <br />
+    <label>Jersey Number:</label><input type="text" name="Jersey" /><br />
+    <input type="submit" value="Register" id="submitnewuser" />
+</form>
