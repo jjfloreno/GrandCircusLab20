@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lab20.Models;
 
 namespace Lab20.Controllers
 {
@@ -10,6 +11,11 @@ namespace Lab20.Controllers
     {
         public ActionResult Index()
         {
+            //ORM
+            HockeyShopDBEntities InventoryList = new HockeyShopDBEntities();
+
+            //load data to display
+            ViewBag.Inventory = InventoryList.Items.OrderBy(x => x.ItemCat).ThenBy(x => x.ItemName).ToList();
             return View();
         }
 
@@ -33,15 +39,25 @@ namespace Lab20.Controllers
             return View();
         }
  
-        public ActionResult RegisterUser(string FirstName, string Position, string Email)
+        public ActionResult RegisterUser(User newUser)
         {
-            ViewBag.Message = $"Thank you for resgistering, {FirstName}!\nA confirmation has been sent to {Email}.";
+            //1. ORM
+            HockeyShopDBEntities newHockeyUser = new HockeyShopDBEntities();
 
-            if(Position == "Forward")
+            //2. Add to list and save to DB.
+            //need to validate before accepting email address (PK of customer)
+
+            newHockeyUser.Users.Add(newUser);
+            newHockeyUser.SaveChanges();
+
+            //Confirmation on new view and a message based on position
+            ViewBag.Message = $"Thank you for resgistering, {newUser.FirstName}!\nA confirmation has been sent to {newUser.Email}.";
+
+            if(newUser.Position == "Forward")
             {
                 ViewBag.YourPosition = $"Go get 'em, Gretzky!";
             }
-            else if(Position == "Defense")
+            else if(newUser.Position == "Defense")
             {
                 ViewBag.YourPosition = $"Number four, Bobby Orr!";
             }
@@ -51,6 +67,26 @@ namespace Lab20.Controllers
             }
 
             return View("NewUser");
+        }
+
+        public ActionResult SearchByItemName (string Item_Name)
+        {
+            HockeyShopDBEntities ItemResults = new HockeyShopDBEntities();
+
+            ViewBag.Inventory = ItemResults.Items.Where(x => x.ItemName.Contains(Item_Name))
+                .OrderBy(x => x.ItemCat).ThenBy(x => x.ItemName).ToList();
+
+            return View("Index");
+        }
+
+        public ActionResult SelectItemCategory (string ViewCategory)
+        {
+            HockeyShopDBEntities CatResults = new HockeyShopDBEntities();
+
+            ViewBag.Inventory = CatResults.Items.Where(x => x.ItemCat == ViewCategory)
+                .OrderBy(x => x.ItemCat).ThenBy(x => x.ItemName).ToList();
+
+            return View("Index");
         }
     }
 }

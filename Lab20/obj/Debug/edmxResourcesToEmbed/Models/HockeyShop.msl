@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HockeyShopDBModelStoreContainer" CdmEntityContainer="HockeyShopDBEntities">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="HockeyShopDBModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HockeyShopDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="PWordConfirm" ColumnName="PWordConfirm" />
+          <ScalarProperty Name="JerseyNum" ColumnName="JerseyNum" />
+          <ScalarProperty Name="Hand" ColumnName="Hand" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="PWord" ColumnName="PWord" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="HockeyShopDBModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="ItemCat" ColumnName="ItemCat" />
+          <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+          <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

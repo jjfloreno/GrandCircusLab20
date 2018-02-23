@@ -10,3 +10,44 @@
 <div class="row">
     <h2>Register <a href="/Home/Registration">here</a></h2>
 </div>
+<br /><br />
+
+<h2>Check Out Our Inventory:</h2>
+<br />
+
+<form action="/Home/SearchByItemName" method="get">
+    <input type="text" placeholder="Item Name" name="Item_Name" />
+    <input type="submit" value="Search" />
+</form>
+<form action="/Home/SelectItemCategory" method="get">
+    <select name="ViewCategory">
+        <option value="" disabled selected>Select Category</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Goalie">Goalie</option>
+        <option value="Helmets">Accessories</option>
+        <option value="Skates">Skates</option>
+        <option value="Sticks">Sticks</option>
+    </select>
+    <input type="submit" value="View Category" />
+</form>
+<br />
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Category</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        @foreach (var item in ViewBag.Inventory)
+        {
+            <tr>
+                <td>@item.ItemCat</td>
+                <td>@item.ItemName</td>
+                <td>@item.ItemDesc</td>
+                <td>@String.Format("{0:C}", item.ItemPrice)</td>
+            </tr>
+        }
+    </table>
+</div> 

@@ -21,7 +21,7 @@
             Position: {
                 required:true
             },
-            Jersey: {
+            JerseyNum: {
                 number: true //needs work - how to make it between 1-99?
             }
         },
